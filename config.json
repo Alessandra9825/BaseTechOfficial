@@ -1,0 +1,6 @@
+{
+    "connectionString": "mongodb+srv://123456LP:123456LP@cluster0.uax2w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "connectionStringV2": "mongodb+srv://123456LP:123456LP@cluster0.uax2w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "databaseV2":"mongo-sample",
+    "port": 9090
+}
