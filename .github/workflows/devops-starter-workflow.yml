@@ -2,7 +2,7 @@ name: Build and Deploy node Express app to azure
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   AZURE_WEBAPP_NAME: BaseTechApp # set this to your application's name
