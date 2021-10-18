@@ -36,7 +36,7 @@ jobs:
 on:
   create:
     tags:
-      - *
+      - 'v*'
 
 env:
   AZURE_WEBAPP_NAME: OfficialBaseTech # set this to your application's name
