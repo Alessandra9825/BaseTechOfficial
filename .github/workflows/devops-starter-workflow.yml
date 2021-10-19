@@ -37,7 +37,6 @@ stages:
             package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
 -stage: production
-    dependsOn: qa
     condition: succeeded(qa)
     jobs:
     build-and-deploy:
