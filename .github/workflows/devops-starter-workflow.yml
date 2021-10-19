@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -26,10 +26,27 @@ jobs:
           # deploy to Azure Web App.
           npm install
           npm run build --if-present
-        working-directory: .
-      - name: 'Deploy to Azure WebApp'
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME_QA }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_QA }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+    deploy-ambiente-QA:
+      needs: Build
+      environment: staging
+      runs-on: ubuntu-latest
+      steps:
+        - name: 'Deploy to Azure WebApp QA'
+          uses: azure/webapps-deploy@v2
+          with:
+            app-name: ${{ env.AZURE_WEBAPP_NAME_QA }}
+            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_QA }}
+            package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+    deploy-ambiente-PRD:
+      needs: deploy-ambiente-QA
+      environment: production
+      runs-on: ubuntu-latest
+      steps:
+        - name: 'Deploy to Azure WebApp PRD'
+          uses: azure/webapps-deploy@v2
+          with:
+            app-name: ${{ env.AZURE_WEBAPP_NAME}}
+            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
+            package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
