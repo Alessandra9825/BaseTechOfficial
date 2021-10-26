@@ -6,10 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://081180021@dev.azure.com/081180021/Desigualdade%20Conceitual%20Tecnol%C3%B3gica/_git/Desigualdade%20Conceitual%20Tecnol%C3%B3gica"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
